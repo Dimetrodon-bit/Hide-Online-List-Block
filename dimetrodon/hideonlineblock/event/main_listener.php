@@ -45,14 +45,16 @@ class main_listener implements EventSubscriberInterface
 
 	/**
 	 * Loads after the page header.
-	 * Blocks access to online list block to non-Admins. 
+	 * Blocks access to online list block to non-staff. 
 	 *
 	 * @param \phpbb\event\data	$event	Event object
 	 */
 	public function header_after($event): void
 	{
+		// Checking for a lack of either moderative or administrative permissions.
 		if (!$this->auth->acl_get('a_') && !$this->auth->acl_get('m_'))
 		{
+			// Removing the online list and statistics blocks if a user lacks staff permissions.
 			$this->twig->assign_var('S_DISPLAY_ONLINE_LIST', false);
 			$this->twig->assign_var('NEWEST_USER', false);
 		}
