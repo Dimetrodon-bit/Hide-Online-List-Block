@@ -29,11 +29,11 @@ class main_listener implements EventSubscriberInterface
 		private language $language,
 		private twig $twig,
 		private user $user,
-		
+
 	)
 	{
 	}
-	
+
 	public static function getSubscribedEvents(): array
 	{
 		return [
@@ -45,7 +45,7 @@ class main_listener implements EventSubscriberInterface
 
 	/**
 	 * Loads after the page header.
-	 * Blocks access to online list block to non-staff. 
+	 * Blocks access to online list block to non-staff.
 	 *
 	 * @param \phpbb\event\data	$event	Event object
 	 */
